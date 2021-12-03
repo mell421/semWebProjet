@@ -10,6 +10,8 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.*;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 public class tp5 {
 	static Model ex1() {
@@ -149,13 +151,31 @@ public class tp5 {
 		m.write(System.out, "Turtle");
 		return m;
 	}
+	
+	static void toRDF() {
+        final String url = "https://territoire.emse.fr/kg/ontology.nt";
+        final Model model = ModelFactory.createDefaultModel();
+        model.read(url);
+        model.write(System.out);
+    }
+
+	public class RetrieveRemoteRDF {
+	    void toRDF2() {
+	        final String url = "http://www.w3.org/TR/REC-rdf-syntax/example14.nt";
+	        final Model model = ModelFactory.createDefaultModel();
+	        model.read(url);
+	        model.write(System.out);
+	    }
+	}
 	public static void main(String[] args) {
-		Model m1 = cours();
-		Model m = TP();
+		//cours();
+		//TP();
+		toRDF();
 		//
 		//m.write(System.out);
 		//System.out.println("--------------");
 		//System.out.println(m);
+		
 		
 		
 		

@@ -12,42 +12,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.*;
 
 public class Main {
-	static Model ex1() {
-		// some definitions
-		String personURI    = "http://somewhere/JohnSmith";
-		String fullName     = "John Smith";
-
-		// create an empty Model
-		Model model = ModelFactory.createDefaultModel();
-
-		// create the resource
-		Resource johnSmith = model.createResource(personURI);
-
-		// add the property
-		johnSmith.addProperty(VCARD.FN, fullName);
-		return model;
-	}
-	static Model ex2() {
-		// some definitions
-		String personURI    = "http://somewhere/JohnSmith";
-		String givenName    = "John";
-		String familyName   = "Smith";
-		String fullName     = givenName + " " + familyName;
-
-		// create an empty Model
-		Model model = ModelFactory.createDefaultModel();
-
-		// create the resource
-		//   and add the properties cascading style
-		Resource johnSmith
-		  = model.createResource(personURI)
-		         .addProperty(VCARD.FN, fullName)
-		         .addProperty(VCARD.N,
-		                      model.createResource()
-		                           .addProperty(VCARD.Given, givenName)
-		                           .addProperty(VCARD.Family, familyName));
-		return model;
-	}
+	
 	static Model TP() {
 		BufferedReader reader;
 		Model m = ModelFactory.createDefaultModel();
@@ -114,7 +79,7 @@ public class Main {
 		m.write(System.out, "Turtle");
 		return m;
 	}
-	
+
 	static Model cours() {
 		// create an empty Jena model
 		Model m = ModelFactory.createDefaultModel();
@@ -149,9 +114,16 @@ public class Main {
 		m.write(System.out, "Turtle");
 		return m;
 	}
+	static void readFile() {
+        final String url = "https://territoire.emse.fr/kg/ontology.nt";
+        final Model model = ModelFactory.createDefaultModel();
+        model.read(url);
+        model.write(System.out);
+    }
 	public static void main(String[] args) {
-		Model m1 = cours();
-		Model m = TP();
+		cours();
+		TP();
+		readFile();
 		//
 		//m.write(System.out);
 		//System.out.println("--------------");
