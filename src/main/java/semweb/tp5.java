@@ -1,5 +1,5 @@
 package semweb;
-
+// EYRAUD Melanie
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,7 +11,7 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.*;
 
-public class Main {
+public class tp5 {
 	static Model ex1() {
 		// some definitions
 		String personURI    = "http://somewhere/JohnSmith";
