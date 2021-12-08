@@ -115,8 +115,8 @@ public class Main {
 		return m;
 	}
 	static void readFile() {
-        final String url = "https://territoire.emse.fr/kg/ontology.nt";
-        final Model model = ModelFactory.createDefaultModel();
+        String url = "https://territoire.emse.fr/kg/ontology.nt";
+        Model model = ModelFactory.createDefaultModel();
         model.read(url);
         model.write(System.out);
     }
